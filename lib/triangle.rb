@@ -32,7 +32,17 @@ class Triangle
   end
   
   def validate_triangle
-    
+    if @sides.all? { |side| side == 0 } || @sides.any? { |side| side < 0 } ||
+      
+      # Check for triangle inequality:
+      # The sum of the length of any 2 sides 
+      # exceeds that of the third side
+      ( @sides[0] + @sides[1] <= @sides[2] || 
+        @sides[1] + @sides[2] <= @sides[0] || 
+        @sides[0] + @sides[2] <= @sides[1] )
+      
+      raise TriangleError
+  end
   
   class TriangleError < StandardError
     def message
