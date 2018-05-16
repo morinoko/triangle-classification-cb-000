@@ -32,6 +32,7 @@ class Triangle
         @sides[0] + @sides[2] <= @sides[1] )
       
       raise TriangleError
+    end
   end
   
   class TriangleError < StandardError
