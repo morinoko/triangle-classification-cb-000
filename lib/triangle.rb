@@ -7,6 +7,21 @@ class Triangle
   end
   
   def kind
+    validate_triangle
+    
+    unique_sides = @sides.uniq.length
+      
+    case unique_sides
+      when 1 # all sides are equal
+        @kind = :equilateral
+      when 2 # two sides are equal
+        @kind = :isosceles
+      when 3 # no sides are equal
+        @kind = :scalene
+    end
+  end
+  
+  def validate_triangle
     if @sides.all? { |side| side == 0 } || @sides.any? { |side| side < 0 } ||
       
       # Check for triangle inequality:
@@ -17,17 +32,6 @@ class Triangle
         @sides[0] + @sides[2] <= @sides[1] )
       
       raise TriangleError
-    else
-      unique_sides = @sides.uniq.length
-      
-      case unique_sides
-        when 1 # all sides are equal
-          @kind = :equilateral
-        when 2 # two sides are equal
-          @kind = :isosceles
-        when 3 # no sides are equal
-          @kind = :scalene
-      end
     end
   end
   
