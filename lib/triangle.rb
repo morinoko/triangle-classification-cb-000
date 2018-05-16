@@ -31,6 +31,9 @@ class Triangle
     end
   end
   
+  def validate_triangle
+    
+  
   class TriangleError < StandardError
     def message
       "Invalid triangle. Check the lenght of your triangle's sides!"
