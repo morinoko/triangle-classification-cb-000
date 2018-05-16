@@ -7,13 +7,15 @@ class Triangle
   end
   
   def kind
-    if @sides.all? { |side| side == 0 } ||
-      @sides.any? { |side| side < 0 } ||
+    if @sides.all? { |side| side == 0 } || @sides.any? { |side| side < 0 } ||
+      
       # Check for triangle inequality:
-      # The sum of the length of any 2 sides exceeds that of the third side
+      # The sum of the length of any 2 sides 
+      # exceeds that of the third side
       ( @sides[0] + @sides[1] <= @sides[2] || 
         @sides[1] + @sides[2] <= @sides[0] || 
         @sides[0] + @sides[2] <= @sides[1] )
+      
       raise TriangleError
     else
       unique_sides = @sides.uniq.length
@@ -31,7 +33,7 @@ class Triangle
   
   class TriangleError < StandardError
     def message
-      "invalid triangle"
+      "Invalid triangle. Check the lenght of your triangle's sides!"
     end
   end
   
