@@ -19,11 +19,11 @@ class Triangle
       unique_sides = @sides.uniq.length
       
       case unique_sides
-        when 1
+        when 1 # all sides are equal
           @kind = :equilateral
-        when 2 
+        when 2 # two sides are equal
           @kind = :isosceles
-        when 3
+        when 3 # no sides are equal
           @kind = :scalene
       end
     end
